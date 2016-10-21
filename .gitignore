@@ -1,0 +1,15 @@
+.svn
+.metadata
+RemoteSystemsTempFiles
+Servers
+target
+classes
+WEB-INF/classes/
+bin
+lib
+*.jar
+*.bat
+*.dat
+*.class
+*/org.eclipse.wst.common.component
+SeekServer
