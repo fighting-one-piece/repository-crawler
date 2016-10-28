@@ -57,8 +57,6 @@ class KuaiDaiLiPipeline implements Pipeline{
 		String str=":";
 		for(int i=0;i<ip.size();i++){		
 			String dizi =ip.get(i)+str+port.get(i);
-			System.out.println(dizi);
-			System.out.println(time.get(i));
 			String fen=".*分钟*.";
 			String shi=".*小时*.";
 			if(time.get(i).matches(fen)){
@@ -66,23 +64,17 @@ class KuaiDaiLiPipeline implements Pipeline{
 				String fenz=time.get(i).substring(0,index);			
 				long a=Long.parseLong(fenz);
 				long fz=a*60;
-				System.out.println(fenz);
-				System.out.println(fz);
 				ProxyIPUtils.add(dizi, fz);
-			
 			}else if(time.get(i).matches(shi)){
 				int index=time.get(i).indexOf("小");
 				String xiao=time.get(i).substring(0,index);
 				long a=Long.parseLong(xiao);
 				long xs=a*3600;
-				System.out.println(xs);
-				System.out.println(xiao);
 				ProxyIPUtils.add(dizi, xs);
 			}else{
 				int index=time.get(i).indexOf("秒");
 				String miao=time.get(i).substring(0,index);
 				long m=Long.parseLong(miao);
-				System.out.println(miao);
 				ProxyIPUtils.add(dizi, m);
 			}
 		}
