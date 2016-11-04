@@ -2,6 +2,7 @@ package org.platform.crawler.webmagic.modules.secondhand.tongcheng.computer;
 
 import org.bson.Document;
 import org.platform.crawler.utils.mongodb.MongoDBUtils;
+import org.springframework.stereotype.Component;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -11,7 +12,10 @@ import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
 
-public class ComputerPippine implements Pipeline {
+
+@Component("computerPipeline")
+public class ComputerPipeline implements Pipeline {
+	
 	MongoClient mongoClient = MongoDBUtils.getInstance().getClient();
 
 	@Override
@@ -27,9 +31,9 @@ public class ComputerPippine implements Pipeline {
 			String phoneNote = resultItems.get("phoneNote");
 			String url = resultItems.get("url");
 
-			MongoDatabase database = mongoClient.getDatabase("jsq");
+			MongoDatabase database = mongoClient.getDatabase("secondhand");
 			MongoCollection<Document> collection = database
-					.getCollection("jsq123");
+					.getCollection("tongcheng_computer");
 			Document document1 = new Document();
 			if (title != null) {
 				document1.append("title", title).append("price", price)

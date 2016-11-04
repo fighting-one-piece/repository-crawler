@@ -22,6 +22,7 @@ public class TongChengCarPipeline implements Pipeline {
 		MongoDatabase database = mongoClient.getDatabase("secondhand");
 		MongoCollection<Document> collection = database.getCollection("tongcheng_car");
 		Document document = null;
+		System.out.println(car.getCarName());
 		if (car.getCarName() != null) {
 			document = new Document();
 			document.append("href", car.getHref());

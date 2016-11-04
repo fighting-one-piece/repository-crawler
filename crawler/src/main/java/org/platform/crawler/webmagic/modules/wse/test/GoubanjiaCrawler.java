@@ -1,4 +1,4 @@
-package org.platform.crawler.webmagic.modules.proxyip;
+package org.platform.crawler.webmagic.modules.wse.test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +9,15 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.platform.crawler.utils.http.HtmlUnitUtils;
 import org.platform.crawler.utils.proxy.ProxyIP;
-import org.platform.crawler.utils.proxy.ProxyIPUtils;
 import org.platform.crawler.webmagic.modules.abstr.GenericCrawler;
 
 
 @ProxyIP
 public class GoubanjiaCrawler  extends GenericCrawler{
 	
-	
+	public static void main(String[] args) {
+		new GoubanjiaCrawler().startCrawl();
+	}
 	@Override
 	public void startCrawl() {
 		List<String> ip = new ArrayList<String>();
@@ -47,7 +48,8 @@ public class GoubanjiaCrawler  extends GenericCrawler{
 			ip.add(sf.toString());
 		}
 		for(int i=0;i<ip.size();i++){
-			ProxyIPUtils.add(ip.get(i)+port.get(i), 360);
+			System.out.println(ip.get(i)+port.get(i));
+//			ProxyIPUtils.add(ip.get(i)+port.get(i), 360);
 			
 		}
 		

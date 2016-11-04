@@ -1,17 +1,13 @@
 package org.platform.crawler.webmagic.modules.secondhand.tongcheng.computer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
-import us.codecraft.webmagic.Spider;
-import us.codecraft.webmagic.pipeline.ConsolePipeline;
-import us.codecraft.webmagic.pipeline.Pipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
-import us.codecraft.webmagic.scheduler.FileCacheQueueScheduler;
 
-public class Computer implements PageProcessor {
+
+public class Computer  implements PageProcessor {
 	private Site site = Site.me().setRetryTimes(3).setSleepTime(1000);
 
 	@Override
@@ -104,14 +100,4 @@ public class Computer implements PageProcessor {
 		return site;
 	}
 
-	public static void main(String[] args) {
-		List<Pipeline> list = new ArrayList<Pipeline>();
-		list.add(new ConsolePipeline());
-		list.add(new ComputerPippine());
-		Spider.create(new Computer())
-				.addUrl("http://www.58.com/diannao/changecity/?PGTID=0d300023-0006-675e-0ce3-9aa5714cedb8&ClickID=3")
-				// .addPipeline(new Mongoiple())
-				.setScheduler(new FileCacheQueueScheduler("d:\\errorUrl"))
-				.setPipelines(list).thread(10).run();
-	}
 }
